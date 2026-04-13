@@ -1,0 +1,25 @@
+# node modules
+node_modules/
+
+# env files
+.env
+
+# logs
+logs
+*.log
+
+# OS files
+.DS_Store
+
+# build files
+dist/
+build/
+
+# vite
+.vite/
+
+# coverage
+coverage/
+
+# IDE
+.vscode/
