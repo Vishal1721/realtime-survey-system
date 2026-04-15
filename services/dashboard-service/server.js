@@ -1,7 +1,14 @@
+require("dotenv").config();
 const redis = require("redis");
 const WebSocket = require("ws");
-
 const subscriber = redis.createClient();
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    service: "response-service",
+  });
+});
 
 const wss = new WebSocket.Server({ port: 4000 });
 
