@@ -7,7 +7,7 @@ function App() {
     const ws = new WebSocket("ws://localhost:4000");
 
     ws.onopen = () => {
-      console.log("Connected to WebSocket ✅");
+      console.log("Connected to WebSocket");
     };
 
     ws.onmessage = (event) => {
