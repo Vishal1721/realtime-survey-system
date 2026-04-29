@@ -11,7 +11,9 @@
   "description": "",
   "dependencies": {
     "body-parser": "^2.2.2",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "joi": "^18.1.2",
     "kafkajs": "^2.2.4"
   }
 }

@@ -1,10 +1,13 @@
 require("dotenv").config();
 const { Kafka } = require("kafkajs");
 const redis = require("redis");
+const express = require("express");
 const kafka = new Kafka({
   clientId: "aggregation-service",
   brokers: [process.env.KAFKA_BROKER],
 });
+
+const app = express();
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -12,10 +15,15 @@ app.get("/health", (req, res) => {
     service: "response-service",
   });
 });
+app.listen(3002, () => {
+  console.log("Aggregation health check on port 3002");
+});
 
 const consumer = kafka.consumer({ groupId: "survey-group" });
 
-const redisClient = redis.createClient();
+const redisClient = redis.createClient({
+  url: process.env.REDIS_URL || "redis://redis:6379",
+});
 
 const start = async () => {
   await consumer.connect();
